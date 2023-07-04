@@ -34,7 +34,7 @@ function Note(props) {
     return (
         <div className="note">
             <input onChange={handleChange} name="title" value={fullNote.title} />
-            <textarea onChange={handleChange} name="content" >{fullNote.content}</textarea>
+            <textarea onChange={handleChange} name="content" value={fullNote.content} />
             <Zoom in={true}>
                 <Fab color="error" onClick={() => props.deleteButtonClicked(props.id)}><DeleteIcon /></Fab>
             </Zoom>
