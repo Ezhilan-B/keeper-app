@@ -27,7 +27,6 @@ function CreateArea(props) {
 
     function handleAddClick(event) {
         if (inputNote.title !== "" && inputNote.content !== "") {
-            console.log(inputNote.title !== null)
             props.clicked(inputNote);
             setInputNote({
                 title: "",

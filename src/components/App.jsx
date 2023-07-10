@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import "../styles.css";
 
 function App() {
 
@@ -21,7 +22,6 @@ function App() {
           note.title = modifiedNote.title;
           note.content = modifiedNote.content;
         }
-        console.log(noteList)
         return note;
       })
     });
@@ -30,9 +30,10 @@ function App() {
   function deleteNote(id) {
     setNoteList(prevNote => {
       return prevNote.filter((note, index) => {
-        return id !== index;
+        return index !== id;
       })
     });
+    console.log(noteList);
   }
 
   return (

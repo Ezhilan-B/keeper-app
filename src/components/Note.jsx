@@ -10,6 +10,11 @@ function Note(props) {
         title: props.title,
         content: props.content
     });
+
+    function deleteButton() {
+        props.deleteButtonClicked(props.id);
+    } 
+
     const [isModified, setIsModified] = useState(false);
 
     function handleChange(event) {
@@ -31,12 +36,13 @@ function Note(props) {
         setIsModified(false);
     }
 
+
     return (
         <div className="note">
             <input onChange={handleChange} name="title" value={fullNote.title} />
             <textarea onChange={handleChange} name="content" value={fullNote.content} />
             <Zoom in={true}>
-                <Fab color="error" onClick={() => props.deleteButtonClicked(props.id)}><DeleteIcon /></Fab>
+                <Fab color="error" onClick={deleteButton}><DeleteIcon /></Fab>
             </Zoom>
             <Zoom in={isModified}>
                 <Fab color="success" onClick={addButtonClick}><AddIcon /></Fab>
