@@ -12,8 +12,9 @@ function Note(props) {
     });
 
     function deleteButton() {
-        props.deleteButtonClicked(props.id);
-    } 
+        props.onDelete(props.id);
+
+    }
 
     const [isModified, setIsModified] = useState(false);
 
@@ -31,7 +32,7 @@ function Note(props) {
         });
     }
 
-    function addButtonClick() {
+    function editButtonClick() {
         props.updateButton(fullNote, props.id);
         setIsModified(false);
     }
@@ -39,13 +40,13 @@ function Note(props) {
 
     return (
         <div className="note">
-            <input onChange={handleChange} name="title" value={fullNote.title} />
-            <textarea onChange={handleChange} name="content" value={fullNote.content} />
+            <input onChange={handleChange} name="title" value={props.title} />
+            <textarea onChange={handleChange} name="content" value={props.content} />
             <Zoom in={true}>
                 <Fab color="error" onClick={deleteButton}><DeleteIcon /></Fab>
             </Zoom>
             <Zoom in={isModified}>
-                <Fab color="success" onClick={addButtonClick}><AddIcon /></Fab>
+                <Fab color="success" onClick={editButtonClick}><AddIcon /></Fab>
             </Zoom>
         </div>
     );

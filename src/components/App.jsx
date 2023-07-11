@@ -10,15 +10,22 @@ function App() {
   const [noteList, setNoteList] = useState([]);
 
   function addNote(note) {
-    setNoteList(prevNote => {
-      return [...prevNote, note]
+    const updatedNoteList = [...noteList, note]
+    setNoteList(updatedNoteList);
+    let result = fetch(
+      'http://localhost:5000/', {
+      method: "post",
+      body: JSON.stringify({ updatedNoteList }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
   }
 
   function modifyNote(modifiedNote, id) {
     setNoteList(prevNote => {
-      return prevNote.map((note, index) => {
-        if (index === id) {
+      return prevNote.map((note) => {
+        if (note.id === id) {
           note.title = modifiedNote.title;
           note.content = modifiedNote.content;
         }
@@ -28,21 +35,19 @@ function App() {
   }
 
   function deleteNote(id) {
+    console.log(id);
     setNoteList(prevNote => {
-      return prevNote.filter((note, index) => {
-        return index !== id;
+      return prevNote.filter((note) => {
+        return note.id !== id;
       })
     });
-    console.log(noteList);
   }
 
   return (
     <div>
       <Header />
-      <CreateArea clicked={addNote} />
-      {noteList.map((noteContent, index) =>
-        (<Note key={index} id={index} deleteButtonClicked={deleteNote} updateButton={modifyNote} title={noteContent.title} content={noteContent.content} />)
-      )}
+      <CreateArea addButtonClicked={addNote} />
+      {noteList.map((noteDetails, index) => { return (<Note key={index} id={noteDetails.id} onDelete={deleteNote} updateButton={modifyNote} title={noteDetails.title} content={noteDetails.content} />) })}
       <Footer />
     </div>
   );

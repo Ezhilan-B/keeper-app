@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
+import { v4 as uuidv4 } from 'uuid';
 import Popup from 'reactjs-popup';
 
 function CreateArea(props) {
 
     const [inputNote, setInputNote] = useState({
+        id: uuidv4(),
         title: "",
         content: ""
     });
@@ -27,8 +29,9 @@ function CreateArea(props) {
 
     function handleAddClick(event) {
         if (inputNote.title !== "" && inputNote.content !== "") {
-            props.clicked(inputNote);
+            props.addButtonClicked(inputNote);
             setInputNote({
+                id: uuidv4(),
                 title: "",
                 content: ""
             });
