@@ -44,7 +44,11 @@ function App() {
       <Header />
       <div className="container-fluid">
         <CreateArea addButtonClicked={addNote} />
-        {noteList.map((noteDetails, index) => { return (<Note key={index} id={noteDetails.id} onDelete={deleteNote} title={noteDetails.title} content={noteDetails.content} />) })}
+        <div className="row justify-content-around">
+
+          {noteList.map((noteDetails, index) => { return (<Note key={index} id={noteDetails.id} onDelete={deleteNote} title={noteDetails.title} content={noteDetails.content} />) })}
+
+        </div>
       </div>
       <Footer />
     </div>

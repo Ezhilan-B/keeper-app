@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5c5a4494;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #413f2e6e;
+}
 html {
   font-family: "Montserrat", sans-serif;
 }
@@ -38,6 +57,9 @@ footer p {
   color: #ccc;
 }
 
+.note-section {
+  height: auto;
+}
 .note {
   background: #fff;
   border-radius: 7px;
