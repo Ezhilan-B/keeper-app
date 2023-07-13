@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 import { v4 as uuidv4 } from 'uuid';
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 
 function CreateArea(props) {
 
