@@ -4,22 +4,22 @@ import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 import "../styles.css";
+import axios from "axios";
 
 function App() {
 
   const [noteList, setNoteList] = useState([]);
 
+  axios.get("https://keeper-app-backend-sci5.onrender.com/noteList").then(function (response) {
+    // handle success
+    const updatedNoteList = response.data;
+    setNoteList(updatedNoteList);
+  });
+
   function addNote(note) {
     const updatedNoteList = [...noteList, note]
     setNoteList(updatedNoteList);
-    let result = fetch(
-      'http://localhost:5000/', {
-      method: "post",
-      body: JSON.stringify({ updatedNoteList }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    axios.post("https://keeper-app-backend-sci5.onrender.com/", { note });
   }
 
   function modifyNote(modifiedNote, id) {
@@ -35,7 +35,14 @@ function App() {
   }
 
   function deleteNote(id) {
-    console.log(id);
+    axios.delete("https://keeper-app-backend-sci5.onrender.com/", { params: { id: id } })
+      .then(response => {
+        console.log("Deleted post with ID ${" + id + "}");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
     setNoteList(prevNote => {
       return prevNote.filter((note) => {
         return note.id !== id;
