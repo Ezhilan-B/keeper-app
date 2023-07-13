@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 import { v4 as uuidv4 } from 'uuid';
-// import Popup from 'reactjs-popup';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function CreateArea(props) {
 
@@ -41,8 +41,8 @@ function CreateArea(props) {
 
     return (
         <div>
-            <form className="create-note">
-                <input onChange={handleChange} onClick={() => setIsExpanded(true)} value={inputNote.title} name="title" placeholder="Note title" required={true} />
+            <form className="create-note col-sm-12 col-lg-4 ">
+                <input className="" onChange={handleChange} onClick={() => setIsExpanded(true)} value={inputNote.title} name="title" placeholder="Note title" required={true} />
                 {isExpanded && <textarea onChange={handleChange} value={inputNote.content} name="content" placeholder="Take a note..." rows={isExpanded ? 3 : 1} />}
                 <Zoom in={isExpanded}>
                     <Fab type="submit" onClick={handleAddClick}><AddIcon /></Fab>

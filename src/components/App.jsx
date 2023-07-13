@@ -5,6 +5,7 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 import "../styles.css";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -20,18 +21,6 @@ function App() {
     const updatedNoteList = [...noteList, note]
     setNoteList(updatedNoteList);
     axios.post("https://keeper-app-backend-sci5.onrender.com/", { note });
-  }
-
-  function modifyNote(modifiedNote, id) {
-    setNoteList(prevNote => {
-      return prevNote.map((note) => {
-        if (note.id === id) {
-          note.title = modifiedNote.title;
-          note.content = modifiedNote.content;
-        }
-        return note;
-      })
-    });
   }
 
   function deleteNote(id) {
@@ -53,8 +42,10 @@ function App() {
   return (
     <div>
       <Header />
-      <CreateArea addButtonClicked={addNote} />
-      {noteList.map((noteDetails, index) => { return (<Note key={index} id={noteDetails.id} onDelete={deleteNote} updateButton={modifyNote} title={noteDetails.title} content={noteDetails.content} />) })}
+      <div className="container-fluid">
+        <CreateArea addButtonClicked={addNote} />
+        {noteList.map((noteDetails, index) => { return (<Note key={index} id={noteDetails.id} onDelete={deleteNote} title={noteDetails.title} content={noteDetails.content} />) })}
+      </div>
       <Footer />
     </div>
   );

@@ -43,12 +43,12 @@ footer p {
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
   padding: 10px;
-  width: 240px;
+  /* width: 240px; */
   margin: 16px;
   float: left;
 }
 
-.note input {
+.note h5 {
   font-weight: bold;
   font-size: 1.3em !important;
 }
@@ -67,7 +67,7 @@ footer p {
 
 form.create-note {
   position: relative;
-  width: 480px;
+  /* width: 480px; */
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
@@ -77,8 +77,8 @@ form.create-note {
 
 form.create-note input,
 form.create-note textarea,
-.note input,
-.note textarea {
+.note h4,
+.note p {
   width: 100%;
   border: none;
   padding: 4px;
