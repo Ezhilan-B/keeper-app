@@ -14,6 +14,7 @@ function App() {
   axios.get("https://keeper-app-backend-sci5.onrender.com/noteList").then(function (response) {
     // handle success
     const updatedNoteList = response.data;
+    console.log("Get request sent \n" + updatedNoteList);
     setNoteList(updatedNoteList);
   });
 
